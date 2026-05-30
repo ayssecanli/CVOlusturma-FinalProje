@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV Craft | Premium CV Oluşturucu</title>
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- html2pdf.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="main-header glass-effect">
+    <div class="header-container">
+      <div class="logo" id="header-logo">
+        <i data-lucide="sparkles" class="logo-icon"></i>
+        <span>CVCraft</span>
+      </div>
+      <nav class="nav-links" id="main-nav">
+        <!-- Links populated by JS -->
+      </nav>
+    </div>
+  </header>
+
+  <!-- Notification Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Page Wrappers -->
+  <main id="app-content">
+
+    <!-- 1. LANDING PAGE -->
+    <section id="page-landing" class="page-section active">
+      <div class="hero-section">
+        <div class="hero-glow"></div>
+        <h1 class="hero-title animate-fade-in">Kariyerinizi Şekillendirin, <br><span class="gradient-text">Profesyonel CV</span>'nizi Dakikalar İçinde Hazırlayın</h1>
+        <p class="hero-subtitle animate-fade-in-delayed">Göze hitap eden modern şablonlar, yapay zeka destekli içerik geliştirici ve anlık PDF önizlemesi ile iş başvurularınızda bir adım öne geçin.</p>
+        <div class="hero-actions animate-fade-in-delayed">
+          <a href="#register" class="btn btn-primary btn-large">Hemen Ücretsiz Başla <i data-lucide="arrow-right"></i></a>
+          <a href="#login" class="btn btn-secondary btn-large">Giriş Yap</a>
+        </div>
+        <div class="hero-mockup glass-card animate-slide-up">
+          <div class="mockup-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="mockup-title">CVCraft - Canlı Editör Önizleme</span>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-sidebar">
+              <div class="skeleton-avatar"></div>
+              <div class="skeleton-line short"></div>
+              <div class="skeleton-line medium"></div>
+              <div class="skeleton-line long"></div>
+            </div>
+            <div class="mockup-main">
+              <div class="skeleton-title"></div>
+              <div class="skeleton-line long"></div>
+              <div class="skeleton-line long"></div>
+              <div class="skeleton-line medium"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. LOGIN PAGE -->
+    <section id="page-login" class="page-section">
+      <div class="auth-container">
+        <div class="auth-card glass-card">
+          <h2>Tekrar Hoş Geldiniz</h2>
+          <p class="auth-subtitle">CV'nizi düzenlemek veya yenisini oluşturmak için giriş yapın.</p>
+          <form id="login-form" class="auth-form">
+            <div class="form-group">
+              <label for="login-email">E-posta Adresi</label>
+              <div class="input-wrapper">
+                <i data-lucide="mail" class="input-icon"></i>
+                <input type="email" id="login-email" required placeholder="örnek@eposta.com">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="label-row">
+                <label for="login-password">Şifre</label>
+                <a href="#forgot-password" class="forgot-link">Şifremi Unuttum?</a>
+              </div>
+              <div class="input-wrapper">
+                <i data-lucide="lock" class="input-icon"></i>
+                <input type="password" id="login-password" required placeholder="••••••••">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Giriş Yap <i data-lucide="log-in"></i></button>
+          </form>
+          <p class="auth-footer">Hesabınız yok mu? <a href="#register">Kayıt Olun</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. REGISTER PAGE -->
+    <section id="page-register" class="page-section">
+      <div class="auth-container">
+        <div class="auth-card glass-card">
+          <h2>Hesap Oluşturun</h2>
+          <p class="auth-subtitle">Hemen kaydolun ve profesyonel CV'nizi oluşturmaya başlayın.</p>
+          <form id="register-form" class="auth-form">
+            <div class="form-group">
+              <label for="register-name">Ad Soyad</label>
+              <div class="input-wrapper">
+                <i data-lucide="user" class="input-icon"></i>
+                <input type="text" id="register-name" required placeholder="Ahmet Yılmaz">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="register-email">E-posta Adresi</label>
+              <div class="input-wrapper">
+                <i data-lucide="mail" class="input-icon"></i>
+                <input type="email" id="register-email" required placeholder="örnek@eposta.com">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="register-password">Şifre</label>
+              <div class="input-wrapper">
+                <i data-lucide="lock" class="input-icon"></i>
+                <input type="password" id="register-password" required minlength="6" placeholder="En az 6 karakter">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Kayıt Ol <i data-lucide="user-plus"></i></button>
+          </form>
+          <p class="auth-footer">Zaten üye misiniz? <a href="#login">Giriş Yapın</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. FORGOT PASSWORD -->
+    <section id="page-forgot-password" class="page-section">
+      <div class="auth-container">
+        <div class="auth-card glass-card">
+          <h2>Şifre Sıfırlama</h2>
+          <p class="auth-subtitle">E-posta adresinizi girin, şifrenizi sıfırlayabilmeniz için bir doğrulama kodu (simüle edilmiş) gönderelim.</p>
+          <form id="forgot-form" class="auth-form">
+            <div class="form-group">
+              <label for="forgot-email">E-posta Adresi</label>
+              <div class="input-wrapper">
+                <i data-lucide="mail" class="input-icon"></i>
+                <input type="email" id="forgot-email" required placeholder="örnek@eposta.com">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Sıfırlama Kodu Gönder <i data-lucide="send"></i></button>
+          </form>
+          <p class="auth-footer"><a href="#login"><i data-lucide="arrow-left" class="inline-icon"></i> Giriş Sayfasına Dön</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. USER DASHBOARD -->
+    <section id="page-dashboard" class="page-section">
+      <div class="dashboard-wrapper">
+        <div class="dashboard-header">
+          <div>
+            <h1 class="welcome-text">Hoş Geldiniz, <span id="dash-user-name" class="gradient-text">Kullanıcı</span></h1>
+            <p class="dash-subtitle">Kayıtlı özgeçmişlerinizi yönetin veya yeni bir tasarım oluşturun.</p>
+          </div>
+          <button id="btn-create-cv" class="btn btn-primary"><i data-lucide="plus"></i> Yeni CV Oluştur</button>
+        </div>
+
+        <div class="dashboard-grid">
+          <!-- Left side: Profile Management -->
+          <div class="dash-profile-card glass-card">
+            <h3>Hesap & Profil Bilgileri</h3>
+            <form id="profile-form" class="profile-form">
+              <div class="avatar-upload-container">
+                <div class="avatar-preview-wrapper">
+                  <img id="profile-avatar-preview" src="https://via.placeholder.com/150" alt="Profil Resmi">
+                </div>
+                <div class="upload-btn-wrapper">
+                  <button type="button" class="btn btn-secondary btn-small">Fotoğraf Seç</button>
+                  <input type="file" id="profile-avatar-input" accept="image/*">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="profile-name">Ad Soyad</label>
+                <input type="text" id="profile-name" required>
+              </div>
+              <div class="form-group">
+                <label for="profile-title">Meslek Unvanı</label>
+                <input type="text" id="profile-title" placeholder="Kıdemli Yazılım Geliştirici">
+              </div>
+              <button type="submit" class="btn btn-primary btn-full">Profili Kaydet</button>
+            </form>
+          </div>
+
+          <!-- Right side: CV List -->
+          <div class="dash-cv-list-section">
+            <h3>Özgeçmişleriniz</h3>
+            <div id="cv-list-container" class="cv-list-container">
+              <!-- CV Cards dynamically loaded -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. CV BUILDER WORKSPACE -->
+    <section id="page-builder" class="page-section full-width">
+      <div class="builder-workspace">
+        
+        <!-- Builder Controls Bar -->
+        <div class="builder-control-bar glass-effect">
+          <div class="left-actions">
+            <a href="#dashboard" class="btn btn-secondary btn-small"><i data-lucide="arrow-left"></i> Panel</a>
+            <input type="text" id="cv-title-input" class="cv-title-editable" value="Özgeçmiş Başlığı">
+          </div>
+          <div class="right-actions">
+            <!-- Language Selection -->
+            <div class="select-wrapper">
+              <select id="cv-lang-select" class="btn-select">
+                <option value="tr">Türkçe CV</option>
+                <option value="en">İngilizce CV</option>
+              </select>
+            </div>
+            <!-- Template Selection -->
+            <div class="select-wrapper">
+              <select id="cv-template-select" class="btn-select">
+                <option value="modern">Modern Şablon</option>
+                <option value="corporate">Kurumsal Şablon</option>
+                <option value="creative">Yaratıcı Şablon</option>
+              </select>
+            </div>
+            <!-- Share & Download -->
+            <button id="btn-toggle-share" class="btn btn-secondary"><i data-lucide="share-2"></i> Paylaş</button>
+            <button id="btn-download-pdf" class="btn btn-primary"><i data-lucide="download"></i> PDF İndir</button>
+          </div>
+        </div>
+
+        <!-- Share URL Toast-like panel, hidden by default -->
+        <div id="share-panel" class="share-panel glass-card hidden">
+          <div class="share-panel-header">
+            <h4>Özgeçmiş Paylaşımı</h4>
+            <button id="btn-close-share" class="close-btn">&times;</button>
+          </div>
+          <p>Özgeçmişinizi çevrimiçi paylaşıma açarak özel bir bağlantı oluşturabilirsiniz.</p>
+          <div class="toggle-group">
+            <label class="switch">
+              <input type="checkbox" id="share-public-toggle">
+              <span class="slider round"></span>
+            </label>
+            <span>İnternet paylaşımını aktif et</span>
+          </div>
+          <div id="share-link-wrapper" class="share-link-wrapper hidden">
+            <input type="text" id="share-url-input" readonly>
+            <button id="btn-copy-link" class="btn btn-primary btn-small">Kopyala</button>
+          </div>
+        </div>
+
+        <!-- Main Builder Layout Grid -->
+        <div class="builder-layout">
+          
+          <!-- Left Panel: Wizard Input Forms -->
+          <aside class="builder-inputs-panel glass-card">
+            
+            <!-- Wizard Step Sidebar Tabs -->
+            <div class="wizard-tabs">
+              <button class="wizard-tab-btn active" data-step="1"><i data-lucide="user"></i><span>Kişisel</span></button>
+              <button class="wizard-tab-btn" data-step="2"><i data-lucide="file-text"></i><span>Özet</span></button>
+              <button class="wizard-tab-btn" data-step="3"><i data-lucide="briefcase"></i><span>Deneyim</span></button>
+              <button class="wizard-tab-btn" data-step="4"><i data-lucide="graduation-cap"></i><span>Eğitim</span></button>
+              <button class="wizard-tab-btn" data-step="5"><i data-lucide="award"></i><span>Yetenekler</span></button>
+              <button class="wizard-tab-btn" data-step="6"><i data-lucide="folder-git"></i><span>Projeler</span></button>
+              <button class="wizard-tab-btn" data-step="7"><i data-lucide="languages"></i><span>Diller</span></button>
+            </div>
+
+            <!-- Wizard Step Panels -->
+            <div class="wizard-steps-contents">
+              
+              <!-- STEP 1: Kişisel Bilgiler -->
+              <div class="step-panel active" id="step-panel-1">
+                <h3>Kişisel Bilgiler</h3>
+                <p class="step-desc">İşverenlerin size ulaşabilmesi için temel iletişim bilgilerinizi girin.</p>
+                
+                <div class="form-row">
+                  <div class="form-group half">
+                    <label for="cv-first-name">Adınız</label>
+                    <input type="text" id="cv-first-name" class="cv-input" placeholder="Ahmet">
+                  </div>
+                  <div class="form-group half">
+                    <label for="cv-last-name">Soyadınız</label>
+                    <input type="text" id="cv-last-name" class="cv-input" placeholder="Yılmaz">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group half">
+                    <label for="cv-personal-title">Mesleki Unvan</label>
+                    <input type="text" id="cv-personal-title" class="cv-input" placeholder="Yazılım Mühendisi">
+                  </div>
+                  <div class="form-group half">
+                    <label for="cv-email">E-posta</label>
+                    <input type="email" id="cv-email" class="cv-input" placeholder="ahmet@example.com">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group half">
+                    <label for="cv-phone">Telefon Numarası</label>
+                    <input type="text" id="cv-phone" class="cv-input" placeholder="+90 555 555 5555">
+                  </div>
+                  <div class="form-group half">
+                    <label for="cv-website">Kişisel Web Sitesi</label>
+                    <input type="url" id="cv-website" class="cv-input" placeholder="ahmetyilmaz.dev">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="cv-address">Adres / Şehir</label>
+                  <input type="text" id="cv-address" class="cv-input" placeholder="İstanbul, Türkiye">
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group half">
+                    <label for="cv-github">GitHub Bağlantısı</label>
+                    <input type="url" id="cv-github" class="cv-input" placeholder="github.com/ahmetyilmaz">
+                  </div>
+                  <div class="form-group half">
+                    <label for="cv-linkedin">LinkedIn Bağlantısı</label>
+                    <input type="url" id="cv-linkedin" class="cv-input" placeholder="linkedin.com/in/ahmetyilmaz">
+                  </div>
+                </div>
+              </div>
+
+              <!-- STEP 2: Özet / Hakkımda -->
+              <div class="step-panel" id="step-panel-2">
+                <div class="step-header-with-ai">
+                  <h3>Hakkımda / Profil Özeti</h3>
+                  <button type="button" class="btn btn-secondary btn-small btn-ai" data-section="about">
+                    <i data-lucide="sparkles"></i> Yapay Zeka ile Yaz
+                  </button>
+                </div>
+                <p class="step-desc">Kendinizi, hedeflerinizi ve öne çıkan başarılarınızı özetleyen 3-4 cümle yazın.</p>
+                
+                <div class="form-group">
+                  <label for="cv-about">Ön Yazı / Profil Özeti</label>
+                  <textarea id="cv-about" class="cv-input" rows="10" placeholder="Kariyer hedeflerinizi ve profesyonel kimliğinizi buraya yazın veya Yapay Zeka asistanından destek alın..."></textarea>
+                </div>
+              </div>
+
+              <!-- STEP 3: İş Deneyimi -->
+              <div class="step-panel" id="step-panel-3">
+                <div class="step-title-row">
+                  <h3>İş Deneyimi</h3>
+                  <button type="button" id="btn-add-experience" class="btn btn-secondary btn-small"><i data-lucide="plus"></i> Ekle</button>
+                </div>
+                <p class="step-desc">Çalıştığınız pozisyonları, firmaları ve yaptığınız işleri en yeniden başlayarak ekleyin.</p>
+                
+                <div id="experience-list" class="dynamic-list">
+                  <!-- Dynamic Job items added here -->
+                </div>
+              </div>
+
+              <!-- STEP 4: Eğitim Bilgileri -->
+              <div class="step-panel" id="step-panel-4">
+                <div class="step-title-row">
+                  <h3>Eğitim Bilgileri</h3>
+                  <button type="button" id="btn-add-education" class="btn btn-secondary btn-small"><i data-lucide="plus"></i> Ekle</button>
+                </div>
+                <p class="step-desc">Eğitim geçmişinizi (Üniversite, Lise vb.) ve varsa derecelerinizi girin.</p>
+                
+                <div id="education-list" class="dynamic-list">
+                  <!-- Dynamic Education items added here -->
+                </div>
+              </div>
+
+              <!-- STEP 5: Yetenekler (Skills) -->
+              <div class="step-panel" id="step-panel-5">
+                <div class="step-title-row">
+                  <h3>Yetenekler</h3>
+                  <button type="button" id="btn-add-skill" class="btn btn-secondary btn-small"><i data-lucide="plus"></i> Ekle</button>
+                </div>
+                <p class="step-desc">Teknik ve sosyal yeteneklerinizi ekleyip derecelendirin (1-5 arası).</p>
+                
+                <div id="skills-list" class="dynamic-list grid-list">
+                  <!-- Dynamic Skills added here -->
+                </div>
+              </div>
+
+              <!-- STEP 6: Sertifikalar & Projeler -->
+              <div class="step-panel" id="step-panel-6">
+                <div class="step-title-row">
+                  <h3>Sertifikalar ve Projeler</h3>
+                  <button type="button" id="btn-add-project" class="btn btn-secondary btn-small"><i data-lucide="plus"></i> Ekle</button>
+                </div>
+                <p class="step-desc">Kişisel/profesyonel projelerinizi veya sahip olduğunuz sertifikaları linkleri ile birlikte ekleyin.</p>
+                
+                <div id="projects-list" class="dynamic-list">
+                  <!-- Dynamic Projects added here -->
+                </div>
+              </div>
+
+              <!-- STEP 7: Dil Bilgisi -->
+              <div class="step-panel" id="step-panel-7">
+                <div class="step-title-row">
+                  <h3>Dil Bilgisi</h3>
+                  <button type="button" id="btn-add-language" class="btn btn-secondary btn-small"><i data-lucide="plus"></i> Ekle</button>
+                </div>
+                <p class="step-desc">Bildiğiniz yabancı dilleri ve yetkinlik seviyenizi ekleyin.</p>
+                
+                <div id="languages-list" class="dynamic-list">
+                  <!-- Dynamic Languages added here -->
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Wizard Navigation buttons -->
+            <div class="wizard-footer">
+              <button type="button" id="btn-wizard-prev" class="btn btn-secondary disabled"><i data-lucide="chevron-left"></i> Geri</button>
+              <button type="button" id="btn-wizard-next" class="btn btn-primary">İleri <i data-lucide="chevron-right"></i></button>
+            </div>
+          </aside>
+
+          <!-- Right Panel: Live CV Preview -->
+          <main class="builder-preview-panel">
+            <div class="preview-scroll-wrapper">
+              <div class="a4-page-shadow">
+                <!-- Inside A4 print wrapper -->
+                <div id="cv-print-area" class="a4-page template-modern">
+                  <!-- Selected Template content dynamically injected here -->
+                </div>
+              </div>
+            </div>
+          </main>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 7. PUBLIC VIEW PAGE (SHARED CV) -->
+    <section id="page-share" class="page-section share-mode">
+      <div class="share-view-container">
+        <div class="share-header-actions glass-effect">
+          <span class="share-brand"><i data-lucide="sparkles"></i> CVCraft</span>
+          <button id="btn-share-download-pdf" class="btn btn-primary"><i data-lucide="download"></i> PDF Olarak İndir</button>
+        </div>
+        <div class="preview-scroll-wrapper share-view">
+          <div class="a4-page-shadow">
+            <div id="cv-share-print-area" class="a4-page">
+              <!-- Shared CV rendered here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. 404 NOT FOUND PAGE -->
+    <section id="page-404" class="page-section">
+      <div class="notfound-container">
+        <div class="notfound-card glass-card animate-bounce-slow">
+          <div class="error-glow">404</div>
+          <h2>Aradığınız Sayfa Bulunamadı</h2>
+          <p>Yolunuzu kaybetmiş gibisiniz. Aradığınız özgeçmiş bağlantısı silinmiş, değiştirilmiş veya henüz oluşturulmamış olabilir.</p>
+          <a href="#landing" class="btn btn-primary"><i data-lucide="home"></i> Ana Sayfaya Dön</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- AI ASSIST MODAL -->
+  <div id="ai-modal" class="modal-overlay hidden">
+    <div class="modal-box glass-card">
+      <div class="modal-header">
+        <h3><i data-lucide="sparkles" class="ai-glow-icon"></i> CVCraft Yapay Zeka Asistanı</h3>
+        <button id="btn-close-ai" class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Yazınızı optimize etmek veya sektöre uygun anahtar kelimeler eklemek için kısa bir ipucu veya odak noktası girin.</p>
+        <div class="form-group">
+          <label for="ai-prompt-input">Yapay Zeka Yönlendirmesi (Opsiyonel)</label>
+          <input type="text" id="ai-prompt-input" placeholder="Örn: İngilizceye çevir, teknik kelimeler ekle, daha resmi yap...">
+        </div>
+        <div class="form-group">
+          <label>Mevcut Metin</label>
+          <div id="ai-current-text-display" class="current-text-box"></div>
+        </div>
+        <div class="ai-loading-spinner hidden" id="ai-loading">
+          <div class="spinner"></div>
+          <span>Yapay zeka metni zenginleştiriyor...</span>
+        </div>
+        <div id="ai-suggestion-box" class="ai-suggestion-box hidden">
+          <label>Önerilen Metin</label>
+          <textarea id="ai-enhanced-textarea" rows="6" class="cv-input"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-ai-generate" class="btn btn-secondary"><i data-lucide="wand-2"></i> İçeriği Zenginleştir</button>
+        <button id="btn-ai-apply" class="btn btn-primary hidden">Öneriyi Uygula</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="main-footer">
+    <p>&copy; 2026 CVCraft. Tüm Hakları Saklıdır. Google DeepMind Antigravity Projesi kapsamında geliştirilmiştir.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
