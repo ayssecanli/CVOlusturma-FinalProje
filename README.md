@@ -1,5 +1,7 @@
 # CVCraft | Premium CV Oluşturucu
 
+[Buraya Tıklayarak Google Drive Dosyasına Ulaşabilirsiniz](https://drive.google.com/file/d/1nI1I0mKZ1uTSLwQGLxeZmdtYDht_FC-8/view?usp=drivesdk)
+
 CVCraft, kullanıcıların profesyonel, modern ve göze hitap eden özgeçmişler (CV) hazırlamasını sağlayan, yapay zeka destekli ve tam kapsamlı bir web uygulamasıdır. Proje, Node.js tabanlı Express backend mimarisi ve Vanilla JS/CSS ön uç yapısı ile modern yazılım mimarisi standartlarına uygun olarak tasarlanmıştır.
 
 ## 🚀 Öne Çıkan Özellikler
