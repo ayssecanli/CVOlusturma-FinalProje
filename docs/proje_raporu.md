@@ -1,7 +1,7 @@
 # YAPAY ZEKA DESTEKLİ CV OLUŞTURMA PLATFORMU 
 ## DÖNEM PROJESİ SONUÇ RAPORU
 
-**Geliştirici:** [Ayşe Canlı]  
+**Geliştirici:** Ayşe Canlı 
 **Kurum:** Gazi University  
 **Proje Dönemi:** Mayıs 2026  
 
