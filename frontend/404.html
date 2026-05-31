@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Kariyer Sayfası Bulunamadı | CV Builder AI</title>
+    <style>
+        :root {
+            --bg-color: #0a192f;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-blue: #38bdf8;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Arka plan soft ışık efektleri */
+        body::before, body::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            filter: blur(150px);
+            opacity: 0.15;
+            z-index: 0;
+        }
+        body::before { top: 10%; left: 15%; }
+        body::after { bottom: 10%; right: 15%; }
+
+        .error-container {
+            max-width: 550px;
+            width: 90%;
+            padding: 2.5rem;
+            text-align: center;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            z-index: 1;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .error-code {
+            font-size: 7.5rem;
+            font-weight: 800;
+            line-height: 1;
+            background: linear-gradient(135deg, #ffffff 30%, var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+        }
+
+        .error-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+        }
+
+        .error-message {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        /* Kod bloğu şeklinde esprili hata detayı */
+        .code-box {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: left;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            color: #a7f3d0;
+            margin-bottom: 2rem;
+        }
+        .code-box span { color: var(--accent-blue); }
+
+        .btn-home {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--accent-blue);
+            color: #0a192f;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3);
+        }
+
+        .btn-home:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
+            background-color: #7dd3fc;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="error-container">
+        <div class="error-code">404</div>
+        <h1 class="error-title">Aradığınız Sayfa Boşlukta Kaldı!</h1>
+        <p class="error-message">
+            Aradığınız CV bileşeni, şablon veya rota mevcut değil ya da kariyer basamaklarını tırmanırken başka bir dizine taşınmış.
+        </p>
+
+        <div class="code-box">
+            <span>AI_Analysis:</span> { status: "Hata", msg: "Deneyim bulunamadı", action: "Paneli_Kontrol_Et()" }
+        </div>
+
+        <a href="/" class="btn-home">Panele Geri Dön</a>
+    </div>
+
+</body>
+</html>
